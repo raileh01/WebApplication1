@@ -2,101 +2,37 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <br />
-    <div class="container">
+    <br />
+   
+    <asp:TextBox ID="CantidadId" runat="server"></asp:TextBox><asp:Label ID="Label1" runat="server" Text="Cantidad"></asp:Label><br />
+    <asp:TextBox ID="NombreId" runat="server"></asp:TextBox><asp:Label ID="Label2" runat="server" Text="Nombre"></asp:Label><br />
+    <asp:TextBox ID="ProductoId" runat="server"></asp:TextBox><asp:Label ID="Label3" runat="server" Text="Producto"></asp:Label><br />
+    <asp:TextBox ID="PrecioId" runat="server"></asp:TextBox><asp:Label ID="Label4" runat="server" Text="Precio"></asp:Label><br /><br />
+    <asp:Label ID="Label5" runat="server" Text="Opciones"></asp:Label>
+    <br />
+    <asp:DropDownList ID="SelectOpciones" runat="server">
+        <asp:ListItem>Favoritos</asp:ListItem>
+        <asp:ListItem>Carrito</asp:ListItem>
+    </asp:DropDownList>
+    <br />
+    <br />
+    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Agregar" />
 
-        <div class="row">
-            <label for="inputCantidad">Cantidad</label>
-            <input type="number" class="form-control" id="inputCantidad">
+    <br />
+    <br />
 
-            <label for="inputNombre">Nombre</label>
-            <input type="text" class="form-control" id="inputNombre">
+    <asp:Label ID="Label6" runat="server" Text="Tabla de favoritos:"></asp:Label><br /><br />
+    <asp:BulletedList ID="ListaFavoritos" runat="server">
+        <asp:ListItem>prueba item</asp:ListItem>
+    </asp:BulletedList>
 
-            <label for="inputProducto">Producto</label>
-            <input type="text" class="form-control" id="inputProducto">
+    <br />
+    <br />
 
-            <label for="inputPrecio">Precio Unitario</label>
-            <input type="number" class="form-control" id="inputPrecio">
+    <asp:Label ID="Label7" runat="server" Text="Tabla del carrito:"></asp:Label><br /><br />
+    <asp:BulletedList ID="ListaCarrito" runat="server">
+    </asp:BulletedList>
+    <asp:Label ID="Label8" runat="server" Text="Suma SubTotal = "></asp:Label><asp:Label ID="SumaSubTotalItems" runat="server" Text="0"></asp:Label>
 
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="inputOpciones">Options</label>
-            </div>
-            <select class="custom-select" id="inputOpciones">
-                <option value="favoritos">Favoritos</option>
-                <option value="carrito">Carrito</option>
-            </select>
-            <br />
-            <button onclick ="prueba1(); return false;" id="agregarId" class="btn btn-primary">Agregar</button>
-        </div>
-
-        <div class="row">
-            <br />
-            <div class="col-6">
-                <div class="card" style="width: 18rem;">
-                <div class="card-header">
-                    <h4>Favoritos</h4>
-                </div>
-                    <ul class="list-group list-group-flush" id="favoritosListaId">
-                    </ul>
-                </div>
-                <div class="card-footer text-muted">
-                    Suma Sub Total Item = <strong id="sumaTotalFavoritos">0</strong>
-                </div>
-            </div>
-
-            <div class="col-6">
-                <div class="card" style="width: 18rem;">
-                <div class="card-header">
-                    <h4>Carrito</h4>
-                </div>
-                    <ul class="list-group list-group-flush" id="carritoListaId">
-                    </ul>
-                </div>
-                <div class="card-footer text-muted">
-                    Suma Sub Total Item = <strong id="sumaTotalCarrito">0</strong> <br />
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <script type="text/javascript">
-
-        var sumaTotalFavoritos = 0;
-        var sumaTotalCarrito = 0;
-        
-        function prueba1() {
-            try {
-                console.log("hola")
-                var tipoOpcion = $("#inputOpciones").val();
-                var tagHtml;
-
-                if (tipoOpcion == "favoritos") {
-                    var nombre = $("#inputNombre").val();
-                    var producto = $("#inputProducto").val();
-                    var precio = $("#inputPrecio").val();
-
-                    tagHtml = `<br>Nombre = ${nombre} <br>Producto = ${producto} <br>Precio = ${precio}`;
-
-                    $("#favoritosListaId").append('<li class="list-group-item"' + tagHtml);
-                    sumaTotalFavoritos += parseFloat(precio) * cantidad;
-                    $("#sumaTotalFavoritos").text(sumaTotalFavoritos);
-
-                } else {
-                    var cantidad = $("#inputCantidad").val();
-                    var nombre = $("#inputNombre").val();
-                    var precio = $("#inputPrecio").val();
-                    var producto = $("#inputProducto").val();
-                    
-
-                    tagHtml = `<br>Cantidad = ${cantidad} <br>Nombre = ${nombre} <br>Precio Unitario = ${parseFloat(precio)} <br>Sub Total = ${parseFloat(precio) * cantidad}`;
-
-                    $("#carritoListaId").append('<li class="list-group-item"' + tagHtml);
-                    sumaTotalCarrito += parseFloat(precio) * cantidad;
-                    $("#sumaTotalCarrito").text(sumaTotalCarrito);
-                }
-            } catch {
-                return false;
-            }
-        }
-    </script>
+   
 </asp:Content>
